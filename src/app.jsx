@@ -6,7 +6,7 @@ import Login from './components/login';
 class App extends Component {
     render() {
         return (
-        	<Switch>
+            <Switch>
         		<Route exact path="/" component={Login} />
                 <Route path="/login" component={Login} />
         	</Switch>
