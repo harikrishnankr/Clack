@@ -1,0 +1,15 @@
+* {
+	box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Montserrat' !important;
+  src: url('../../assets/fonts/Montserrat-Light.ttf') format('ttf'),
+}
+
+body {
+	background: #f6f5f7;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: 0;
+}

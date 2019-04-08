@@ -7,6 +7,7 @@ module.exports = merge(common, {
         compress: true,
         port: 9000,
         watchContentBase: true,
-        progress: true
+        progress: true,
+        historyApiFallback: true
     }
 })
