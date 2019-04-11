@@ -5,10 +5,88 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Clack</title>
+    <style type="text/css">
+    	.loader:empty {
+    		height: 100vh;
+    		background: url('./assets/images/logo.png') no-repeat center;
+    	}
+    	.spinner {
+    		display: none;
+    	}
+
+    	.loader:empty + div.spinner {
+    		display: block;
+		    position: absolute;
+		    top: 41%;
+		    left: 50%;
+    	}
+    	.spinner-box {
+		  	animation: rotate 2s linear infinite;
+		  	z-index: 2;
+		    margin: 45px 0 0 -70px;
+		    width: 50px;
+		    height: 50px;
+		}
+		
+		.spinner-box .path {
+		    stroke: hsl(210, 70, 75);
+		    stroke-linecap: round;
+		    animation: dash 1.5s ease-in-out infinite;
+		}
+
+		.white-circle {
+			height: 30px;
+		    width: 30px;
+		    background: #fff;
+		    position: absolute;
+		    top: 55px;
+		    left: -60px;
+		    z-index: 3;
+		    border-radius: 50%;
+		}
+
+		.chat-box {
+			position: absolute;
+		    height: 56px;
+		    width: 56px;
+		    background: #5625e7;
+		    left: -73px;
+		    top: 42px;
+		    border-radius: 90%;
+		}
+
+		@keyframes rotate {
+		  100% {
+		    transform: rotate(360deg);
+		  }
+		}
+
+		@keyframes dash {
+		  0% {
+		    stroke-dasharray: 1, 150;
+		    stroke-dashoffset: 0;
+		  }
+		  50% {
+		    stroke-dasharray: 90, 150;
+		    stroke-dashoffset: -35;
+		  }
+		  100% {
+		    stroke-dasharray: 90, 150;
+		    stroke-dashoffset: -124;
+		  }
+		}
+    </style>
 </head>
 
 <body>
-    <div id="root"></div>
+    <div id="root" class="loader"></div>
+	<div class="spinner">
+		<div class="white-circle"></div>
+		<div class="chat-box"></div>
+		<svg class="spinner-box" viewBox="0 0 50 50">
+		  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke="#fff" stroke-width="2"></circle>
+		</svg>
+	</div>
 </body>
 </script>
 
