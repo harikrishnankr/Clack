@@ -7,7 +7,7 @@ import Login from './pages/login';
 import Chat from './pages/chat';
 
 const demoAsyncCall = ()=> {
-  return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+  return new Promise((resolve) => setTimeout(() => resolve(), 1000));
 }
 
 class App extends Component {

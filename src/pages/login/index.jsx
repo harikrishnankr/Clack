@@ -16,13 +16,13 @@ class Login extends Component {
         		<div className="left-side">
                     <div className="logo"></div>
                     <div className="sign-in-form">
-                        <h2>Login</h2>
+                        <h2>Sign In</h2>
                         <form>
                             <div className="form-group">
                                 <Input/>
                             </div>
                             <div className="form-group">
-                                <Input/>
+                                <Input type="password"/>
                             </div>
                             <div className="form-group button-group">
                                 <Button text="Sign In"/>

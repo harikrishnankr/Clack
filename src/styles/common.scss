@@ -12,4 +12,10 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	height: 100vh;
 	margin: 0;
+	display: block;
+
+	#root {
+		height: 100%;
+		width: 100%;
+	}
 }

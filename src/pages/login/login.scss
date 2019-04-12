@@ -1,0 +1,25 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	height: 100%;
+	width: 100%;
+	
+	.left-side {
+		.logo {
+			height: 60px;
+			width: 60px;
+			background: url('../../../assets/images/logo-small.png') no-repeat center;
+			margin: 0 auto;
+		}
+		.sign-in-form {
+			h2 {
+				text-align: center;
+			}
+		}
+	}
+
+	.ride-side {
+
+	}
+}
