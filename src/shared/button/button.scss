@@ -1,0 +1,34 @@
+@import "../../styles/variables";
+
+.app-button {
+	height: 36px;
+    min-width: 100px;
+    background: $white;
+    border: 1px solid $primary;
+    border-radius: 4px;
+    color: $primary;
+    display: inline-block;
+    margin: 5px;
+    outline: none;
+    cursor: pointer;
+
+    &.primary {
+    	background: $primary;
+    	color: $white;
+    }
+
+    &.success {
+    	border: 1px solid $success;
+    	color: $success;
+    }
+
+    &.error {
+    	border: 1px solid $error;
+    	color: $error;
+    }
+
+    &.warning {
+    	border: 1px solid $warning;
+    	color: $warning;
+    }
+}

@@ -9,7 +9,7 @@ module.exports = {
         path: path.resolve('./dist')
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.scss']
     },
     module: {
         rules: [{

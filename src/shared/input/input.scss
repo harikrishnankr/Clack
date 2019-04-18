@@ -1,0 +1,66 @@
+@import "../../styles/variables";
+
+.input-wrapper {
+	position: relative;
+	display: flex;
+	align-items:center;
+	margin: 7px;
+	background: $white;
+
+	.placeholder {
+		position: absolute;
+		left: 14px;
+		background: $white;
+		color: $gray;
+		z-index: 1;
+	}
+
+	.app-input {
+		height: 50px;
+		min-width: 100px;
+		margin: 3px;
+		padding: 3px;
+    	padding-left: 10px;
+		border-radius: 7px;
+		border: 1px solid $gray;
+		outline: none;
+		z-index: 2;
+		background: transparent;
+		&:focus + .placeholder,
+		&:valid + .placeholder{
+			padding: 3px;
+			z-index: 3;
+			color: $primary;
+			font-weight: bold;
+			font-size: 14px;
+			// Top value is half of font-size (14/2)px
+			top: -7px; 
+		}
+
+		&:focus,
+		&:valid {
+			border: 2px solid $primary;
+		}
+
+		&.success {
+			border: 2px solid $success !important;
+			+ .placeholder {
+				color:  $success !important;
+			}
+		}
+
+		&.error {
+			border: 2px solid $error !important;
+			+ .placeholder {
+				color:  $error !important;
+			}
+		}
+
+		&.warning {
+			border: 2px solid $warning !important;
+			+ .placeholder {
+				color:  $warning !important;
+			}
+		}
+	}
+}

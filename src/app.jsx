@@ -6,32 +6,33 @@ import './styles/common.scss';
 import Login from './pages/login';
 import Chat from './pages/chat';
 
-const demoAsyncCall = ()=> {
+const demoAsyncCall = () => {
   return new Promise((resolve) => setTimeout(() => resolve(), 1000));
 }
 
 class App extends Component {
-	state = {
-	   loading: true
-	};
+    state = {
+       loading: true
+    };
 
-	componentDidMount() {
-    	demoAsyncCall().then(() => this.setState({ loading: false }));
-  	}
+    componentDidMount() {
+        demoAsyncCall().then(() => this.setState({ loading: false }));
+    }
  
     render() {
-    	const { loading } = this.state;
+        const { loading } = this.state;
 
-    	if(loading) {
-	   		return null;
-	    }
+        if(loading) {
+               return null;
+        }
 
         return (
             <Switch>
                 <Route path="/login" component={Login} />
+                <Route path="/sign-up" component={Login} />
                 <Route path="/chat" component={Chat} />
-        		<Route exact path="/" component={Login} />
-        	</Switch>
+                <Route exact path="/" component={Login} />
+            </Switch>
         );
     }
 }

@@ -8,8 +8,17 @@ class Button extends Component {
 	}
 	
     render() {
+    	const {
+    		type = 'default',
+    		text,
+    		className,
+            action
+    	} = this.props;
+
+    	const classNames = ['app-button', type, className];
+
         return (
-        	<button {...this.props}>{this.props.text}</button>
+        	<button {...this.props} type={action} className={classNames.join(' ')}>{text}</button>
         );
     }
 }

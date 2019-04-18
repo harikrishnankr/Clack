@@ -11,24 +11,46 @@ class Login extends Component {
 	}
 	
     render() {
+        const {
+            history
+        } = this.props;
+
+        console.log(history)
+
         return (
         	<div className="container">
         		<div className="left-side">
                     <div className="logo"></div>
                     <div className="sign-in-form">
                         <h2>Sign In</h2>
-                        <form>
+                        <form noValidate={true}>
                             <div className="form-group">
-                                <Input/>
+                                <Input 
+                                    className="login-input" 
+                                    placeholder="Email"
+                                    autofocus="true"
+                                />
                             </div>
                             <div className="form-group">
-                                <Input type="password"/>
+                                <Input 
+                                    type="password" 
+                                    className="login-input" 
+                                    placeholder="Password"
+                                />
                             </div>
-                            <div className="form-group button-group">
-                                <Button text="Sign In"/>
-                                <Button text="Sign Up"/>
+                            <div className="button-group">
+                                <Button 
+                                    action="submit" 
+                                    type="primary" 
+                                    text="Sign In"
+                                />
                             </div>
-                            <div className="form-group social-networks"></div>
+                            <div className="button-group">
+                                <Button 
+                                    onClick={ () => history.go("/sign-up") } 
+                                    text="Don't have an account?"
+                                />
+                            </div>
                         </form>
                     </div>
                 </div>
