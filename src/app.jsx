@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import './styles/common.scss';
 
-import Login from './pages/login';
-import Chat from './pages/chat';
+import Login from './pages/auth/login';
+import AppLayout from './shared/app-layout';
+import SignUp from './pages/auth/sign-up';
 
 const demoAsyncCall = () => {
   return new Promise((resolve) => setTimeout(() => resolve(), 1000));
@@ -23,15 +24,15 @@ class App extends Component {
         const { loading } = this.state;
 
         if(loading) {
-               return null;
+            return null;
         }
 
         return (
             <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/sign-up" component={Login} />
-                <Route path="/chat" component={Chat} />
                 <Route exact path="/" component={Login} />
+                <Route path="/login" component={Login} />
+                <Route path="/sign-up" component={SignUp} />
+                <Route path="/app" component={AppLayout}/>
             </Switch>
         );
     }

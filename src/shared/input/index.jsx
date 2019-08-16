@@ -8,11 +8,9 @@ class Input extends Component {
 	}
 
 	componentDidMount() {
-		const input = (this._reactInternalFiber.return.stateNode).getElementsByTagName('input');
-		console.log(input)
-		if(this.props.autofocus) {
-			// input.
-		}
+        if(this.props.autofocus) {
+            this._input.focus()
+        }
 	}
 	
     render() {
@@ -25,21 +23,24 @@ class Input extends Component {
     		isDisabled,
     		className,
     		placeholder,
-    		autofocus
+			autofocus,
+			size = 'large'
     	} = this.props;
 
-    	const classNames = ['app-input'];
+		const classNames = ['app-input'];
+		const sizeClassName = [ 'input-wrapper' ,size];
     	isError && classNames.push('error');
     	isSuccess && classNames.push('success');
     	isWarning && classNames.push('warning');
-    	className && classNames.push(className);
+		className && classNames.push(className);
 
         return (
-        	<div className="input-wrapper">
+        	<div className={sizeClassName.join(' ')}>
         		<input 
         			type={type}
         			required={isRequired}
         			className={classNames.join(' ')}
+                    ref={c => this._input = c}
         		/>
         		<span className="placeholder">{placeholder}</span>
         	</div>

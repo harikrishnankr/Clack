@@ -7,10 +7,11 @@
 	
 	.left-side {
 		.logo {
-			height: 60px;
-			width: 60px;
-			background: url('../../../assets/images/logo-small.png') no-repeat center;
+			height: 75px;
+			width: 180px;
+			background: url('../../../assets/images/clack-logo__small.png') no-repeat center;
 			margin: 0 auto;
+			background-size: 100%;
 		}
 		.sign-in-form {
 			h2 {

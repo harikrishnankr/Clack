@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+
+.app-wrapper {
+    .app-pages {
+        position: absolute;
+        left: $sidebar-width;
+        width: calc(100% - 60px);
+        min-height: 100vh;
+        background: $background-gray;
+    }
+    
+    .side-bar {
+        width: $sidebar-width;
+        height: 100vh;
+        box-shadow: 1px 0px 3px $gray;
+        position: fixed;
+        left: 0;
+        z-index: 1;
+        .logo {
+            height: $sidebar-width;
+			width: $sidebar-width;
+			background: url('../../../assets/images/clack-logo__small.png') no-repeat center;
+			background-size: 100px;
+        }
+    }
+
+    .page-wrapper {
+        position: absolute;
+        left: 90px;
+        right: 0px;
+        min-height: 100vh;
+    }
+}

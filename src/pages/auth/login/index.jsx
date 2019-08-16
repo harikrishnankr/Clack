@@ -1,24 +1,30 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
 
-import Input from "../../shared/input";
-import Button from "../../shared/button";
-import "./login.scss";
+import Input from "../../../shared/input";
+import Button from "../../../shared/button";
+import "../auth.scss";
 
 class Login extends Component {
 
 	constructor(props) {
 		super(props);
+        this.state = {
+            goToSignUp: false
+        }
+        this.goToSignUp = this.goToSignUp.bind(this);
 	}
+
+    goToSignUp() {
+        this.setState({
+            goToSignUp: true
+        });
+    }
 	
     render() {
-        const {
-            history
-        } = this.props;
-
-        console.log(history)
-
         return (
         	<div className="container">
+                { this.state.goToSignUp ? <Redirect to="/sign-up" /> : ""}
         		<div className="left-side">
                     <div className="logo"></div>
                     <div className="sign-in-form">
@@ -40,22 +46,18 @@ class Login extends Component {
                             </div>
                             <div className="button-group">
                                 <Button 
-                                    action="submit" 
                                     type="primary" 
                                     text="Sign In"
                                 />
                             </div>
                             <div className="button-group">
                                 <Button 
-                                    onClick={ () => history.go("/sign-up") } 
+                                    onClick={() => this.goToSignUp() } 
                                     text="Don't have an account?"
                                 />
                             </div>
                         </form>
                     </div>
-                </div>
-                <div className="right-side">
-
                 </div>
         	</div>
         );

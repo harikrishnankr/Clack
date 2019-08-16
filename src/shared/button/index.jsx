@@ -12,7 +12,7 @@ class Button extends Component {
     		type = 'default',
     		text,
     		className,
-            action
+            action = 'button'
     	} = this.props;
 
     	const classNames = ['app-button', type, className];
