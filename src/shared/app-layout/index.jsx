@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route } from 'react-router-dom';
 
 import Chat from "../../pages/chat";
+import Settings from "../../pages/settings";
 import SideBar from "./side-bar";
 import RecentChat from "../recent-chat";
 
@@ -21,6 +22,7 @@ class AppLayout extends Component {
                     <RecentChat/>
                     <div className="u-padding page-wrapper">
                         <Route path="/app/chat" component={Chat}/>
+                        <Route path="/app/settings" component={Settings}/>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import './styles/common.scss';
 import Login from './pages/auth/login';
 import AppLayout from './shared/app-layout';
 import SignUp from './pages/auth/sign-up';
+import 'font-awesome/scss/font-awesome.scss';
 
 const demoAsyncCall = () => {
   return new Promise((resolve) => setTimeout(() => resolve(), 1000));
