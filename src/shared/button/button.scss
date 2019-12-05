@@ -1,8 +1,7 @@
 @import "../../styles/variables";
 
 .app-button {
-	height: 36px;
-    min-width: 100px;
+    height: 36px;
     background: $white;
     border: 1px solid $primary;
     border-radius: 4px;
@@ -11,6 +10,9 @@
     margin: 5px;
     outline: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &.primary {
     	background: $primary;

@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.profile-holder {
+    height: 50px;
+    width: 100%;
+    position: relative;
+    margin: 3px 0;
+    cursor: pointer;
+    .profile {
+        height: 39px;
+        width: 39px;
+        border-radius: 50%;
+        background: $primary;
+        color: $white;
+    }
+    &.active:after {
+        content: "";
+        height: 100%;
+        width: 4px;
+        position: absolute;
+        background: $primary;
+        right: 0;
+        border-bottom-left-radius: 7px;
+        border-top-left-radius: 7px;
+    }
+}

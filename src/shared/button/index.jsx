@@ -18,7 +18,9 @@ class Button extends Component {
     	const classNames = ['app-button', type, className];
 
         return (
-        	<button {...this.props} type={action} className={classNames.join(' ')}>{text}</button>
+			<button {...this.props} type={action} className={classNames.join(' ')}>
+				{text ? text : this.props.children}
+			</button>
         );
     }
 }

@@ -1,0 +1,92 @@
+@import "../../styles/variables";
+
+.chat-header {
+    .user-name {
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 8px;
+    }
+}
+
+.chat-footer {
+    min-height: 40px;
+    width: 100%;
+    box-shadow: 0 4px 16px 0 rgba(136, 136, 136, 0.2);
+    border-radius: 6px;
+    background: $white;
+    .chat-input-button {
+        padding: 10px;
+    }
+    .chat-input {
+        outline: none;
+        margin: 12px 5px;
+        overflow: auto;
+    }
+    .chat-smilies {
+        font-size: 20px;
+        margin: 10px 7px;
+        color: $gray;
+        cursor: pointer;
+    }
+}
+
+.chat-body {
+    min-height: calc(100vh - 122px);
+    max-height: calc(100vh - 122px);
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 8px;
+    .chat-body-wrapper {
+        min-height: 60px;
+        width: 100%;
+        &.from {
+            .chat-message {
+                float: right;
+                min-height: 60px;
+                background: $white;
+                min-width: 100px;
+                border-bottom-left-radius: 6px;
+                border-top-left-radius: 6px;
+                border-bottom-right-radius: 6px;
+                box-shadow: 0 4px 16px 0 rgba(136, 136, 136, 0.2);
+                position: relative;
+                margin-right: 12px;
+                &:after {
+                    content: "";
+                    transform: rotate(-45deg);
+                    top: -1px;
+                    position: absolute;
+                    right: -10px;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-bottom: 8px solid $white;
+                }
+            }
+        }
+        &.to {
+            .chat-message {
+                float: left;
+                min-height: 60px;
+                background: $primary;
+                color: $white;
+                min-width: 100px;
+                border-bottom-left-radius: 6px;
+                border-bottom-right-radius: 6px;
+                border-top-right-radius: 6px;
+                box-shadow: 0 4px 16px 0 rgba(136, 136, 136, 0.2);
+                position: relative;
+                margin-left: 12px;
+                &:after {
+                    content: "";
+                    transform: rotate(45deg);
+                    top: -1px;
+                    position: absolute;
+                    left: -10px;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    border-bottom: 8px solid $primary;
+                }
+            }
+        }
+    }
+}

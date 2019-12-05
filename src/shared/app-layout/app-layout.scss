@@ -12,7 +12,7 @@
     .side-bar {
         width: $sidebar-width;
         height: 100vh;
-        box-shadow: 1px 0px 3px $gray;
+        box-shadow: 1px 0px 7px 3px $gray;
         position: fixed;
         left: 0;
         z-index: 1;
@@ -23,11 +23,11 @@
 			background-size: 100px;
         }
         .links {
-            height: calc(100vh - 120px);
+            height: calc(100vh - 135px);
             width: 100%;
             overflow: auto;
             flex-direction: column;
-            margin: 13px 0;
+            margin: 10px 0;
             .link-button {
                 height: 85px;
                 width: 100%;
@@ -62,10 +62,6 @@
                     }
                 }
             }
-        }
-        .profile {
-            height: $sidebar-width;
-            width: 100%;
         }
     }
 

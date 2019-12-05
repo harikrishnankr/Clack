@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Profile from '../profile';
+import Profile from '../../profile';
 import { NavLink } from 'react-router-dom';
 
 export default class SideBar extends Component{
@@ -27,9 +27,7 @@ export default class SideBar extends Component{
                         </div>
                     </NavLink>
                 </div>
-                <div className="profile u-flex u-justify-center">
-                    <Profile/>
-                </div>
+                <Profile/>
             </div>
         )
     }
