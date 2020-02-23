@@ -9,6 +9,12 @@ module.exports = {
         path: path.resolve('./dist')
     },
     resolve: {
+        alias: {
+            '@HttpClient': path.resolve('./src/core/services/http-client.service.js'),
+            '@Core': path.resolve('./src/core/'),
+            '@Pages': path.resolve('./src/pages/'),
+            '@Shared': path.resolve('./src/shared/')
+        },
         extensions: ['.js', '.jsx', '.scss']
     },
     module: {

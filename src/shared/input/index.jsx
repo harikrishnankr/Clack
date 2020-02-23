@@ -24,8 +24,14 @@ class Input extends Component {
     		className,
     		placeholder,
 			autofocus,
-			size = 'large'
-    	} = this.props;
+			size = 'large',
+			inputRef
+		} = this.props;
+		
+		const customRef = (input) => {
+			inputRef && inputRef(input);
+			this._input = input;
+		}
 
 		const classNames = ['app-input'];
 		const sizeClassName = [ 'input-wrapper' ,size];
@@ -40,7 +46,7 @@ class Input extends Component {
         			type={type}
         			required={isRequired}
         			className={classNames.join(' ')}
-                    ref={c => this._input = c}
+                    ref={input => customRef(input)}
         		/>
         		<span className="placeholder">{placeholder}</span>
         	</div>

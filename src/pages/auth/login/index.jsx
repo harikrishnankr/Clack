@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import Input from "../../../shared/input";
 import Button from "../../../shared/button";
+import Http from "@HttpClient";
 import "../auth.scss";
 
 class Login extends Component {
@@ -20,6 +21,21 @@ class Login extends Component {
             goToSignUp: true
         });
     }
+
+    login() {
+        Http.post({
+            url: 'user/authenticate',
+            body: {
+                username: this.username.value,
+                password: this.password.value
+            }
+        })
+        .then(res=> {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
 	
     render() {
         return (
@@ -35,6 +51,7 @@ class Login extends Component {
                                     className="login-input" 
                                     placeholder="Email"
                                     autofocus="true"
+                                    inputRef={ (input) => this.username = input }
                                 />
                             </div>
                             <div className="form-group">
@@ -42,12 +59,14 @@ class Login extends Component {
                                     type="password" 
                                     className="login-input" 
                                     placeholder="Password"
+                                    inputRef={ (input) => this.password = input }
                                 />
                             </div>
                             <div className="button-group">
                                 <Button 
                                     type="primary" 
                                     text="Sign In"
+                                    onClick={() => this.login()}
                                 />
                             </div>
                             <div className="button-group">
