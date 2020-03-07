@@ -5,16 +5,27 @@ import Input from "../../../shared/input";
 import Button from "../../../shared/button";
 import Http from "@HttpClient";
 import "../auth.scss";
+import {
+    object, string
+} from "yup";
 
 class Login extends Component {
 
 	constructor(props) {
 		super(props);
         this.state = {
-            goToSignUp: false
+            goToSignUp: false,
+            errorMessages: {
+                username: '',
+                password: ''
+            }
         }
         this.goToSignUp = this.goToSignUp.bind(this);
-	}
+        this.schema = object().shape({
+            username: string().required('Enter an email or username'),
+            password: string().required('Enter a password')
+        });
+    }
 
     goToSignUp() {
         this.setState({
@@ -22,19 +33,40 @@ class Login extends Component {
         });
     }
 
-    login() {
-        Http.post({
-            url: 'user/authenticate',
-            body: {
-                username: this.username.value,
-                password: this.password.value
-            }
-        })
-        .then(res=> {
-            console.log(res);
-        }).catch(err => {
-            console.log(err);
+    validate() {
+        return this.schema.validate({
+            username: this.username.value,
+            password: this.password.value
+        }, {
+            abortEarly: false
+        }).catch((err) => {
+            const errors = {};
+            err.inner.forEach(field => {
+                errors[field.path] = field.message;
+            });
+            this.setState({
+                ...this.state,
+                errorMessages: errors
+            })
         });
+    }
+
+    login() {
+        this.validate().then(() => {
+            Http.post({
+                url: 'user/authenticate',
+                body: {
+                    username: this.username.value,
+                    password: this.password.value
+                }
+            })
+            .then(res=> {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            });
+        });
+
     }
 	
     render() {
@@ -51,6 +83,7 @@ class Login extends Component {
                                     className="login-input" 
                                     placeholder="Email"
                                     autofocus="true"
+                                    errorMessage={this.state.errorMessages.username}
                                     inputRef={ (input) => this.username = input }
                                 />
                             </div>
@@ -59,6 +92,7 @@ class Login extends Component {
                                     type="password" 
                                     className="login-input" 
                                     placeholder="Password"
+                                    errorMessage={this.state.errorMessages.password}
                                     inputRef={ (input) => this.password = input }
                                 />
                             </div>

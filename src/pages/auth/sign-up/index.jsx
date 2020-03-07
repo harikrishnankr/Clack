@@ -6,16 +6,35 @@ import Http from "@HttpClient";
 import Input from "../../../shared/input";
 import Button from "../../../shared/button";
 import "../auth.scss";
+import {
+    object, string
+} from "yup";
 
 class SignUp extends Component {;
 
 	constructor(props) {
 		super(props);
         this.state = {
-            goToSignIn: false
+            goToSignIn: false,
+            errorMessages: {
+                email: '',
+                username: '',
+                firstName: '',
+                lastName: '',
+                password: '',
+                confirmPwd: ''
+            }
         };
         this.signUpForm = {}
         this.goToSignIn = this.goToSignIn.bind(this);
+        this.schema = object().shape({
+            username: string(),
+            email: string(),
+            firstName: string().required('Enter a first name'),
+            lastName: string().required('Enter a last name'),
+            password: string().required('Enter a password'),
+            confirmPwd: string().required('Confirm password is mandatory')
+        });
 	}
 
     goToSignIn() {
@@ -33,30 +52,58 @@ class SignUp extends Component {;
             email: '', username: this.signUpForm.emailOrUserName.value
         };
     }
+    
+    validate(model) {
+        return this.schema.validate({
+            ...model
+        }, {
+            abortEarly: false
+        }).catch((err) => {
+            const errors = {
+                username: (!model.username || !model.email) ? 'Enter email/username' : ''
+            };
+            err.inner.forEach(field => {
+                errors[field.path] = field.message;
+            });
+            this.setState({
+                ...this.state,
+                errorMessages: errors
+            })
+        });
+    }
 
     signUp() {
         const {email,username} = this.getUserOrEmail();
-        Http.post({
-            url: 'user/new',
-            body: {
-                email: email,
-                username: username,
-                firstName: this.signUpForm.firstName.value,
-                lastName: this.signUpForm.firstName.value,
-                password: this.signUpForm.password.value
-            }
-        })
-        .then(res=> {
-            console.log(res);
-        }).catch(err => {
-            console.log(err);
+        const model = {
+            email: email,
+            username: username,
+            firstName: this.signUpForm.firstName.value,
+            lastName: this.signUpForm.lastName.value,
+            password: this.signUpForm.password.value
+        }
+        this.validate(model).then(() => {
+            Http.post({
+                url: 'user/new',
+                body: {
+                    email: email,
+                    username: username,
+                    firstName: this.signUpForm.firstName.value,
+                    lastName: this.signUpForm.lastName.value,
+                    password: this.signUpForm.password.value
+                }
+            })
+            .then(res=> {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            });
         });
     }
 	
     render() {
         return (
         	<div className="container">
-                { this.state.goToSignIn ? <Redirect to="/login" /> : ""}
+                { this.state.goToSignIn ? <Redirect to="/login" /> : "" }
         		<div className="left-side">
                     <div className="logo"></div>
                     <div className="sign-in-form">
@@ -67,6 +114,7 @@ class SignUp extends Component {;
                                     className="login-input" 
                                     placeholder="First name"
                                     autofocus="true"
+                                    errorMessage={this.state.errorMessages.firstName}
                                     inputRef={ (input) => this.signUpForm.firstName = input }
                                 />
                             </div>
@@ -74,6 +122,7 @@ class SignUp extends Component {;
                                 <Input 
                                     className="login-input" 
                                     placeholder="Last name"
+                                    errorMessage={this.state.errorMessages.lastName}
                                     inputRef={ (input) => this.signUpForm.lastName = input }
                                 />
                             </div>
@@ -82,6 +131,7 @@ class SignUp extends Component {;
                                 <Input 
                                     className="login-input" 
                                     placeholder="Email/Username"
+                                    errorMessage={this.state.errorMessages.username}
                                     inputRef={ (input) => this.signUpForm.emailOrUserName = input }
                                 />
                             </div>
@@ -90,6 +140,7 @@ class SignUp extends Component {;
                                     type="password" 
                                     className="login-input" 
                                     placeholder="Password"
+                                    errorMessage={this.state.errorMessages.password}
                                     inputRef={ (input) => this.signUpForm.password = input }
                                 />
                             </div>
@@ -98,6 +149,7 @@ class SignUp extends Component {;
                                     type="password" 
                                     className="login-input" 
                                     placeholder="Confirm Password"
+                                    errorMessage={this.state.errorMessages.confirmPwd}
                                     inputRef={ (input) => this.signUpForm.confirmPwd = input }
                                 />
                             </div>

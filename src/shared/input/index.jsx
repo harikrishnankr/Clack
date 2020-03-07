@@ -17,7 +17,7 @@ class Input extends Component {
     	const { 
     		isRequired = true, 
     		type = 'text', 
-    		isError, 
+    		errorMessage, 
     		isSuccess, 
     		isWarning,
     		isDisabled,
@@ -35,21 +35,31 @@ class Input extends Component {
 
 		const classNames = ['app-input'];
 		const sizeClassName = [ 'input-wrapper' ,size];
-    	isError && classNames.push('error');
+    	errorMessage && classNames.push('error');
     	isSuccess && classNames.push('success');
     	isWarning && classNames.push('warning');
 		className && classNames.push(className);
 
         return (
-        	<div className={sizeClassName.join(' ')}>
-        		<input 
-        			type={type}
-        			required={isRequired}
-        			className={classNames.join(' ')}
-                    ref={input => customRef(input)}
-        		/>
-        		<span className="placeholder">{placeholder}</span>
-        	</div>
+			<div className="app-input-wrapper">
+				<div className={sizeClassName.join(' ')}>
+					<input 
+						type={type}
+						required={isRequired}
+						className={classNames.join(' ')}
+						ref={input => customRef(input)}
+					/>
+					<span className="placeholder">{placeholder}</span>
+				</div>
+				{
+					errorMessage ?
+						<div className="error-message">
+							<span className="fa fa-exclamation-circle"></span>
+							<span className="message-text">{errorMessage}</span>
+						</div>
+					: ''
+				}
+			</div>
         );
     }
 }
