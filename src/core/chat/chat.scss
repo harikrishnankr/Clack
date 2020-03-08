@@ -1,33 +1,26 @@
 @import "../../styles/variables";
 
-.chat-header {
-    .user-name {
-        flex-direction: column;
-        justify-content: center;
-        margin-left: 8px;
+.chat-wrapper {
+    height: 100vh;
+}
+
+.chat-left-panel {
+    flex: 35%;
+    .left-panel-header {
+        background: $background-gray;
+        border-bottom: 1px solid #8484840d;
+        .logo {
+			height: 60px;
+			width: 60px;
+			background: url('../../../assets/images/clack-logo__small.png') no-repeat center;
+			margin: 0 auto;
+			background-size: 200%;
+		}
     }
 }
 
-.chat-footer {
-    min-height: 40px;
-    width: 100%;
-    box-shadow: 0 4px 16px 0 rgba(136, 136, 136, 0.2);
-    border-radius: 6px;
-    background: $white;
-    .chat-input-button {
-        padding: 10px;
-    }
-    .chat-input {
-        outline: none;
-        margin: 12px 5px;
-        overflow: auto;
-    }
-    .chat-smilies {
-        font-size: 20px;
-        margin: 10px 7px;
-        color: $gray;
-        cursor: pointer;
-    }
+.chat-right-panel {
+    flex: 65%;
 }
 
 .chat-body {

@@ -1,4 +1,9 @@
 .clack {
+
+    .u-position-relative {
+        position: relative;
+    }
+
     .u-flex {
         display: flex;
     }
@@ -6,6 +11,10 @@
     .u-justify-center {
         justify-content: center;
     }
+
+    .u-justify-end {
+        justify-content: flex-end;
+    }    
 
     .u-flex-grow-1 {
         flex-grow: 1;

@@ -2,8 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items:center;
-	height: 100%;
-	width: 100%;
+	min-height: 100vh;
 	
 	.left-side {
 		.logo {
@@ -13,6 +12,7 @@
 			margin: 0 auto;
 			background-size: 100%;
 		}
+
 		.sign-in-form {
 			h2 {
 				text-align: center;

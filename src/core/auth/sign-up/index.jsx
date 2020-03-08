@@ -79,7 +79,8 @@ class SignUp extends Component {;
             username: username,
             firstName: this.signUpForm.firstName.value,
             lastName: this.signUpForm.lastName.value,
-            password: this.signUpForm.password.value
+            password: this.signUpForm.password.value,
+            confirmPwd: this.signUpForm.confirmPwd.value
         }
         this.validate(model).then(() => {
             Http.post({

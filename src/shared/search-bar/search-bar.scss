@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.search-bar-wrapper {
+    background-color: #f7f7f7;
+    height: 50px;
+    width: 100%;
+    .search-bar {
+        height: 36px;
+        padding: 10px 10px;
+        border-radius: 30px;
+        background: white;
+        width: 100%;
+        button {
+            background: none;
+            border: none;
+            color: $button-bg-gray;
+        }
+        input {
+            width: 100%;
+            border: none;
+            height: 100%;
+            outline: none;
+        }
+    }
+}

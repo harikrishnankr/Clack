@@ -1,0 +1,41 @@
+@import "./variables";
+
+.dropdown {
+    .dropdown-button-wrapper {
+        height: 36px;
+        background: transparent;
+        min-width: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        color: $gray-color;
+
+        &:hover, &.active {
+            background-color: $dropdown-active;
+        }
+    }
+
+    .dropdown-list-wrapper {
+        position: absolute;
+        max-width: 340px;
+        min-width: 130px;
+        overflow: hidden;
+        position: absolute;
+        z-index: 10000;
+        background-color: $white;
+        border-radius: 3px;
+        box-shadow: 0 2px 5px 0 $gray, 0 2px 10px 0 $gray;
+        padding: 9px 0;
+        padding: 12px 0px;
+        top: 40px;
+        .dropdown-item {
+            color: $gray-color;
+            padding: 7px 0px;
+            padding-left: 24px;
+            padding-right: 58px;
+            cursor: pointer;
+            &:hover {
+                background: $background-gray;
+            }
+        }
+    }
+}

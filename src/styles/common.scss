@@ -1,6 +1,8 @@
 @import "variables";
 @import "./utility.scss";
 @import "./scroll-bar.scss";
+@import "./buttons.scss";
+@import "./dropdown.scss";
 
 * {
 	box-sizing: border-box;
@@ -17,9 +19,5 @@ body {
 	height: 100vh;
 	margin: 0;
 	display: block;
-
-	#root {
-		height: 100%;
-		width: 100%;
-	}
+    font-size: 15.5px;
 }

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./button.scss";
 
 class Button extends Component {
 
@@ -15,7 +14,7 @@ class Button extends Component {
             action = 'button'
     	} = this.props;
 
-    	const classNames = ['app-button', type, className];
+    	const classNames = ['c-button', type, className];
 
         return (
 			<button {...this.props} type={action} className={classNames.join(' ')}>

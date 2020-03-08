@@ -1,6 +1,6 @@
-@import "../../styles/variables";
+@import "./variables";
 
-.app-button {
+.c-button {
     height: 36px;
     background: $white;
     border: 1px solid $primary;
@@ -13,6 +13,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 36px;
+
+    &.gray {
+        border-color: $gray;
+        color: $button-bg-gray;
+        background: $background-gray;
+    }
 
     &.primary {
     	background: $primary;

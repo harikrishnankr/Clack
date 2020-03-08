@@ -3,13 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 
 import './styles/common.scss';
 
-import Login from './pages/auth/login';
-import AppLayout from './shared/app-layout';
-import SignUp from './pages/auth/sign-up';
+import Login from './core/auth/login';
+import SignUp from './core/auth/sign-up';
 import 'font-awesome/scss/font-awesome.scss';
+import Chat from './core/chat';
 
 const demoAsyncCall = () => {
-  return new Promise((resolve) => setTimeout(() => resolve(), 1000));
+    return new Promise((resolve) => setTimeout(() => resolve(), 1000));
 }
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
                 <Route exact path="/" component={Login} />
                 <Route path="/login" component={Login} />
                 <Route path="/sign-up" component={SignUp} />
-                <Route path="/app" component={AppLayout}/>
+                <Route path="/chat" component={Chat}/>
             </Switch>
         );
     }
